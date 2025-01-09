@@ -36,11 +36,10 @@ int main(int argc, char **argv) {
 
     shared = nullptr;
     for (auto &ptr : ptrs) ptr = nullptr;
-    ASSERT(observer.use_count() == 0, "");
+    ASSERT(observer.use_count() == 3, "");
 
     shared = observer.lock();
-    // nullptr lock no use
-    ASSERT(observer.use_count() == 0, "");
+    ASSERT(observer.use_count() == 1, "");
 
     return 0;
 }
